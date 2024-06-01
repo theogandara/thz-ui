@@ -1,6 +1,3 @@
-Claro! Aqui está o conteúdo completo formatado em Markdown, incluindo os blocos de código.
-
-````markdown
 # thz-ui
 
 **thz-ui** é uma biblioteca de componentes React que fornece uma coleção de componentes de interface de usuário elegantes e reutilizáveis. Este guia irá mostrar como começar a usar a biblioteca e como utilizar alguns dos principais componentes disponíveis.
@@ -12,7 +9,6 @@ Para instalar a biblioteca **thz-ui**, você pode usar npm ou yarn:
 ```bash
 npm install thz-ui
 ```
-````
 
 ou
 
@@ -69,8 +65,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull re
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais detalhes.
-
-```
-
-Copie e cole este conteúdo no seu arquivo README.md para fornecer uma documentação clara e útil para os usuários da sua biblioteca de componentes React "thz-ui".
-```
