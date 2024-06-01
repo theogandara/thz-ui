@@ -1,160 +1,76 @@
-# TSDX React User Guide
+Claro! Aqui está o conteúdo completo formatado em Markdown, incluindo os blocos de código.
 
-Congrats! You just saved yourself hours of work by bootstrapping this project with TSDX. Let’s get you oriented with what’s here and how to use it.
+````markdown
+# thz-ui
 
-> This TSDX setup is meant for developing React component libraries (not apps!) that can be published to NPM. If you’re looking to build a React-based app, you should use `create-react-app`, `razzle`, `nextjs`, `gatsby`, or `react-static`.
+**thz-ui** é uma biblioteca de componentes React que fornece uma coleção de componentes de interface de usuário elegantes e reutilizáveis. Este guia irá mostrar como começar a usar a biblioteca e como utilizar alguns dos principais componentes disponíveis.
 
-> If you’re new to TypeScript and React, checkout [this handy cheatsheet](https://github.com/sw-yx/react-typescript-cheatsheet/)
+## Instalação
 
-## Commands
-
-TSDX scaffolds your new library inside `/src`, and also sets up a [Parcel-based](https://parceljs.org) playground for it inside `/example`.
-
-The recommended workflow is to run TSDX in one terminal:
+Para instalar a biblioteca **thz-ui**, você pode usar npm ou yarn:
 
 ```bash
-npm start # or yarn start
+npm install thz-ui
 ```
+````
 
-This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
-
-Then run the example inside another:
+ou
 
 ```bash
-cd example
-npm i # or yarn to install dependencies
-npm start # or yarn start
+yarn add thz-ui
 ```
 
-The default example imports and live reloads whatever is in `/dist`, so if you are seeing an out of date component, make sure TSDX is running in watch mode like we recommend above. **No symlinking required**, we use [Parcel's aliasing](https://parceljs.org/module_resolution.html#aliases).
+## Uso
 
-To do a one-off build, use `npm run build` or `yarn build`.
+Após a instalação, você pode começar a usar os componentes importando-os no seu projeto React. Abaixo estão exemplos de como usar alguns dos principais componentes da biblioteca **thz-ui**.
 
-To run tests, use `npm test` or `yarn test`.
+### Button
 
-## Configuration
+O componente `Button` é usado para criar botões interativos. Você pode especificar diferentes variantes de cor usando a propriedade `colors`.
 
-Code quality is set up for you with `prettier`, `husky`, and `lint-staged`. Adjust the respective fields in `package.json` accordingly.
+```jsx
+import { Button } from 'thz-ui';
 
-### Jest
+const App = () => (
+  <>
+    <Button>Teste</Button>
+    <Button colors="error">Erro</Button>
+    <Button colors="secondary">Secundário</Button>
+  </>
+);
 
-Jest tests are set up to run with `npm test` or `yarn test`.
-
-### Bundle analysis
-
-Calculates the real cost of your library using [size-limit](https://github.com/ai/size-limit) with `npm run size` and visulize it with `npm run analyze`.
-
-#### Setup Files
-
-This is the folder structure we set up for you:
-
-```txt
-/example
-  index.html
-  index.tsx       # test your component here in a demo app
-  package.json
-  tsconfig.json
-/src
-  index.tsx       # EDIT THIS
-/test
-  blah.test.tsx   # EDIT THIS
-.gitignore
-package.json
-README.md         # EDIT THIS
-tsconfig.json
+export default App;
 ```
 
-#### React Testing Library
+### Input
 
-We do not set up `react-testing-library` for you yet, we welcome contributions and documentation on this.
+O componente `Input` é usado para criar campos de entrada de dados. Ele é composto por subcomponentes como `Input.Label`, `Input.Box`, `Input.Element`, e `Input.Message` para fornecer uma estrutura completa e flexível para inputs.
 
-### Rollup
+```jsx
+import { Input } from 'thz-ui';
 
-TSDX uses [Rollup](https://rollupjs.org) as a bundler and generates multiple rollup configs for various module formats and build settings. See [Optimizations](#optimizations) for details.
+const App = () => (
+  <Input.Label>
+    Insira o seu usuário
+    <Input.Box>
+      <Input.Element placeholder="Digite seu usuário" />
+    </Input.Box>
+    <Input.Message>Esta é uma mensagem de exemplo.</Input.Message>
+  </Input.Label>
+);
 
-### TypeScript
-
-`tsconfig.json` is set up to interpret `dom` and `esnext` types, as well as `react` for `jsx`. Adjust according to your needs.
-
-## Continuous Integration
-
-### GitHub Actions
-
-Two actions are added by default:
-
-- `main` which installs deps w/ cache, lints, tests, and builds on all pushes against a Node and OS matrix
-- `size` which comments cost comparison of your library on every pull request using [`size-limit`](https://github.com/ai/size-limit)
-
-## Optimizations
-
-Please see the main `tsdx` [optimizations docs](https://github.com/palmerhq/tsdx#optimizations). In particular, know that you can take advantage of development-only optimizations:
-
-```js
-// ./types/index.d.ts
-declare var __DEV__: boolean;
-
-// inside your code...
-if (__DEV__) {
-  console.log('foo');
-}
+export default App;
 ```
 
-You can also choose to install and use [invariant](https://github.com/palmerhq/tsdx#invariant) and [warning](https://github.com/palmerhq/tsdx#warning) functions.
+## Contribuindo
 
-## Module Formats
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests para melhorias e novos recursos.
 
-CJS, ESModules, and UMD module formats are supported.
+## Licença
 
-The appropriate paths are configured in `package.json` and `dist/index.js` accordingly. Please report if any issues are found.
+Este projeto está licenciado sob a licença MIT. Consulte o arquivo `LICENSE` para obter mais detalhes.
 
-## Deploying the Example Playground
-
-The Playground is just a simple [Parcel](https://parceljs.org) app, you can deploy it anywhere you would normally deploy that. Here are some guidelines for **manually** deploying with the Netlify CLI (`npm i -g netlify-cli`):
-
-```bash
-cd example # if not already in the example folder
-npm run build # builds to dist
-netlify deploy # deploy the dist folder
 ```
 
-Alternatively, if you already have a git repo connected, you can set up continuous deployment with Netlify:
-
-```bash
-netlify init
-# build command: yarn build && cd example && yarn && yarn build
-# directory to deploy: example/dist
-# pick yes for netlify.toml
+Copie e cole este conteúdo no seu arquivo README.md para fornecer uma documentação clara e útil para os usuários da sua biblioteca de componentes React "thz-ui".
 ```
-
-## Named Exports
-
-Per Palmer Group guidelines, [always use named exports.](https://github.com/palmerhq/typescript#exports) Code split inside your React app instead of your React library.
-
-## Including Styles
-
-There are many ways to ship styles, including with CSS-in-JS. TSDX has no opinion on this, configure how you like.
-
-For vanilla CSS, you can include it at the root directory and add it to the `files` section in your `package.json`, so that it can be imported separately by your users and run through their bundler's loader.
-
-## Publishing to NPM
-
-We recommend using [np](https://github.com/sindresorhus/np).
-
-## Usage with Lerna
-
-When creating a new package with TSDX within a project set up with Lerna, you might encounter a `Cannot resolve dependency` error when trying to run the `example` project. To fix that you will need to make changes to the `package.json` file _inside the `example` directory_.
-
-The problem is that due to the nature of how dependencies are installed in Lerna projects, the aliases in the example project's `package.json` might not point to the right place, as those dependencies might have been installed in the root of your Lerna project.
-
-Change the `alias` to point to where those packages are actually installed. This depends on the directory structure of your Lerna project, so the actual path might be different from the diff below.
-
-```diff
-   "alias": {
--    "react": "../node_modules/react",
--    "react-dom": "../node_modules/react-dom"
-+    "react": "../../../node_modules/react",
-+    "react-dom": "../../../node_modules/react-dom"
-   },
-```
-
-An alternative to fixing this problem would be to remove aliases altogether and define the dependencies referenced as aliases as dev dependencies instead. [However, that might cause other problems.](https://github.com/palmerhq/tsdx/issues/64)
