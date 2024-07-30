@@ -1,18 +1,34 @@
-import { Button, Input } from 'thz-ui';
+import { Button, Input, Container, Content } from 'thz-ui';
 
 function App() {
   return (
-    <>
-      <Button>Teste</Button>
+    <Content>
+      <Container>
+        <Button>Teste</Button>
+      </Container>
 
-      <Input.Label>
-        Insira o seu usuário
-        <Input.Box>
-          <Input.Element placeholder="Digite seu usuário" />
-        </Input.Box>
-        <Input.Message>Esta é uma mensagem de exemplo.</Input.Message>
-      </Input.Label>
-    </>
+      <Container>
+        <Input.Label>
+          Insira o seu usuário
+          <Input.Box>
+            <Input.Element placeholder="Digite seu usuário" />
+          </Input.Box>
+          <Input.Message>Esta é uma mensagem de exemplo.</Input.Message>
+        </Input.Label>
+      </Container>
+
+      <Container>
+        <Button>Teste</Button>
+      </Container>
+
+      <Container>
+        <Button>Teste</Button>
+      </Container>
+
+      <Container>
+        <Button>Teste</Button>
+      </Container>
+    </Content>
   );
 }
 
